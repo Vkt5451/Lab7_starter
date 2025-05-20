@@ -1,7 +1,7 @@
 describe('Basic user flow for Website', () => {
   // First, visit the lab 7 website
   beforeAll(async () => {
-    await page.goto('https://cse110-sp25.github.io/CSE110-Shop/');
+    await page.goto('http://127.0.0.1:5500/src/');
   });
 
   // Each it() call is a separate test
@@ -75,7 +75,9 @@ describe('Basic user flow for Website', () => {
 
       const productItem = await page.$('product-item');
 
-      const shadowRoot = await shadowRoot.$('button');
+      const shadowRoot = await productItem.getProperty('shadowRoot');
+      const button = await shadowRoot.$('button');
+      
 
       await button.click();
 
@@ -102,23 +104,19 @@ describe('Basic user flow for Website', () => {
      */
 
        const productItems = await page.$$('product-item');
-
-
-      for(let product in productItems){
-
+      for(const product of productItems){
         const shadowRoot = await product.getProperty('shadowRoot');
         const button = await shadowRoot.$('button'); 
         button.click();
         await button.click();
       }
     
-
         const cartCountElem = await page.$('#cart-count');
         const innerTextHandleCart = await cartCountElem.getProperty('innerText');
-        const cartCountText = await cartCountValueHandle.jsonValue();
+        const cartCountText = await innerTextHandleCart.jsonValue();
         expect(cartCountText).toBe(20);
 
-  }, 10000);
+  }, 15000);
 
   // Check to make sure that after you reload the page it remembers all of the items in your cart
   it('Checking number of items in cart on screen after reload', async () => {
@@ -137,7 +135,7 @@ describe('Basic user flow for Website', () => {
       let allButtons = true;
 
 
-      for(let product in productItems){
+      for(let product of productItems){
 
         const shadowRoot = await product.getProperty('shadowRoot');
         const button = await shadowRoot.$('button'); 
@@ -154,7 +152,7 @@ describe('Basic user flow for Website', () => {
 
       const cartCountElem = await page.$('#cart-count');
       const innerTextHandleCart = await cartCountElem.getProperty('innerText');
-      const cartCountText = await cartCountValueHandle.jsonValue();
+      const cartCountText = await innerTextHandleCart.jsonValue();
       expect(cartCountText).toBe(20);
   }, 10000);
 
@@ -190,7 +188,7 @@ describe('Basic user flow for Website', () => {
      * Remember to remove the .skip from this it once you are finished writing this test.
      */
       const productItems = await page.$$('product-item');
-      for(let product in productItems){
+      for(let product of productItems){
 
         const shadowRoot = await product.getProperty('shadowRoot');
         const button = await shadowRoot.$('button'); 
@@ -224,7 +222,7 @@ await page.reload();
       let allButtons = true;
 
 
-      for(let product in productItems){
+      for(let product of productItems){
 
         const shadowRoot = await product.getProperty('shadowRoot');
         const button = await shadowRoot.$('button'); 
