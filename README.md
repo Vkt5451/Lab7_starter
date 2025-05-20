@@ -5,7 +5,8 @@ As I go through the options one by one, I recognize that some of the options are
 I think the best choice would be witnin Github Actions that runs whenever code is pushed. This ensures consistentcy of running tests, finding bugs and errors in the code in the earlier development stages, and saves times as we don't need to manually run tests each time we push our code.  
 
 
-
+2) Would you use an end to end test to check if a function is returning the correct output? (yes/no)
+No.
 
 
 

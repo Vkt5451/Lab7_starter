@@ -107,16 +107,15 @@ describe('Basic user flow for Website', () => {
       for(const product of productItems){
         const shadowRoot = await product.getProperty('shadowRoot');
         const button = await shadowRoot.$('button'); 
-        button.click();
         await button.click();
       }
     
         const cartCountElem = await page.$('#cart-count');
         const innerTextHandleCart = await cartCountElem.getProperty('innerText');
         const cartCountText = await innerTextHandleCart.jsonValue();
-        expect(cartCountText).toBe(20);
+        expect(cartCountText).toBe("20");
 
-  }, 15000);
+  }, 12500);
 
   // Check to make sure that after you reload the page it remembers all of the items in your cart
   it('Checking number of items in cart on screen after reload', async () => {
@@ -153,8 +152,8 @@ describe('Basic user flow for Website', () => {
       const cartCountElem = await page.$('#cart-count');
       const innerTextHandleCart = await cartCountElem.getProperty('innerText');
       const cartCountText = await innerTextHandleCart.jsonValue();
-      expect(cartCountText).toBe(20);
-  }, 10000);
+      expect(cartCountText).toBe("20");
+  }, 12500);
 
   // Check to make sure that the cart in localStorage is what you expect
   it('Checking the localStorage to make sure cart is correct', async () => {
@@ -192,16 +191,16 @@ describe('Basic user flow for Website', () => {
 
         const shadowRoot = await product.getProperty('shadowRoot');
         const button = await shadowRoot.$('button'); 
-        button.click();
+        await button.click();
       }
     
         const cartCountElem = await page.$('#cart-count');
         const innerTextHandleCart = await cartCountElem.getProperty('innerText');
-        const cartCountText = await cartCountValueHandle.jsonValue();
-        expect(cartCountText).toBe(0);
+        const cartCountText = await innerTextHandleCart.jsonValue();
+        expect(cartCountText).toBe("0");
 
 
-  }, 10000);
+  }, 12500);
 
   // Checking to make sure that it remembers us removing everything from the cart
   // after we refresh the page
@@ -238,13 +237,13 @@ await page.reload();
       expect(allButtons).toBe(true);
       const cartCountElem = await page.$('#cart-count');
       const innerTextHandleCart = await cartCountElem.getProperty('innerText');
-      const cartCountText = await cartCountValueHandle.jsonValue();
-      expect(cartCountText).toBe(0);
+      const cartCountText = await innerTextHandleCart.jsonValue();
+      expect(cartCountText).toBe("0");
 
-  }, 10000);
+  }, 12500);
 
   // Checking to make sure that localStorage for the cart is as we'd expect for the
-  // cart being empty
+  // cart being emptyf
   it('Checking the localStorage to make sure cart is correct', async () => {
     console.log('Checking the localStorage...');
 
