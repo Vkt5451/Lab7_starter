@@ -9,6 +9,13 @@ I think the best choice would be witnin Github Actions that runs whenever code i
 No.
 
 
+3) What is the difference between navigation and snapshot mode?
+The difference between the snapchat and navigation mode is that the snapchat mode anaylzes the page in its current state of the page without reloading, whereas the navigation mode analyzes the page from the moment it loads. The snapchat mode is useful for component testing or specific testing for parts of the web app. The navigation mode is useful for full-page audits which tests features such as layout shift and page load performance. In conclusion navigation mode is best used for testing a full user experience whereas snapshot mode is best for auditing a specific component after interaction.
+
+
+4) Name three things we could do to improve the CSE 110 shop site based on the Lighthouse results.
+
+
 
 
 
