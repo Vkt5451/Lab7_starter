@@ -86,6 +86,8 @@ describe('Basic user flow for Website', () => {
       const InnerTextValue = await innerTextHandle.jsonValue();
 
       expect(InnerTextValue).toBe('Remove from Cart');
+
+      await button.click();
       
 
   }, 2500);
